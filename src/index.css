@@ -1,0 +1,15 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 30px;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+}
+.nav-items > ul{
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    font-size: 24px;
+}
