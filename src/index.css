@@ -32,6 +32,8 @@
 }
 .filter{
     margin: 10px 0;
+    display: flex;
+    gap: 10vw;
 }
 .filter-btn{
     cursor: pointer; 
@@ -56,3 +58,7 @@
     background-color: #e8dede;
     margin: 20px;
 }
+.login{
+    width: 60px;
+}
+
