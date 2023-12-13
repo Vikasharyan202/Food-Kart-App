@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utilits/useOnlinestatus";
 
 
 const Body = () => {
@@ -29,6 +30,14 @@ const Body = () => {
             
             console.log(json?.data?.cards[5]?.card?.card?.gridElements?.
                 infoWithStyle?.restaurants)
+    };
+
+    const onlineStatus = useOnlineStatus();
+
+    if(onlineStatus === false){
+        return(
+            <h1>Oops! please check your internet connection</h1>
+        )
     };
 
     return listOfRestaurant.length === 0? (<Shimmer/>):(
