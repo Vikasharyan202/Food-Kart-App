@@ -61,4 +61,11 @@
 .login{
     width: 60px;
 }
-
+.user-card{
+    width: 90%;
+    border: 1px solid grey;
+    padding-left: 2%;
+}
+.user-card img{
+    width: 200px;
+}
