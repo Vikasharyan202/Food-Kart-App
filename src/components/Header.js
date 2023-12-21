@@ -6,9 +6,9 @@ import useOnlineStatus from "../utilits/useOnlinestatus";
 
 const Header = () => {
     const[loginBtn, setLoginBtn] = useState("Login");
-        console.log('Header rendered')
+        // console.log('Header rendered')
     useEffect(() =>{
-        console.log('useEffect called')
+        // console.log('useEffect called')
     }, [loginBtn]);
 
     const onlineStatus = useOnlineStatus();

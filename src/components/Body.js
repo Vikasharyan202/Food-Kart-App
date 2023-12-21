@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utilits/useOnlinestatus";
+import { Link } from "react-router-dom";
 
 
 const Body = () => {
@@ -18,18 +19,18 @@ const Body = () => {
 
     const fetchData = async () => {
         const data = await fetch(
-            "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.6039168&lng=85.1360248&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.6073388&lng=85.1362679&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
             // https://corsproxy.io/? :-> this link solve CORS error for app & it's alternate of "cors plugin for browser"
         const json = await data.json();
-        console.log(json);
+        // console.log(json);
         setListOfRestaurant(json?.data?.cards[5]?.card?.card?.gridElements?.
             infoWithStyle?.restaurants);
         setFilteredRestaurant(json?.data?.cards[5]?.card?.card?.gridElements?.
             infoWithStyle?.restaurants);
             
-            console.log(json?.data?.cards[5]?.card?.card?.gridElements?.
-                infoWithStyle?.restaurants)
+            // console.log(json?.data?.cards[5]?.card?.card?.gridElements?.
+            //     infoWithStyle?.restaurants)
     };
 
     const onlineStatus = useOnlineStatus();
@@ -71,7 +72,12 @@ const Body = () => {
             </div>
             <div className="res-container">
                 {filteredRestaurant.map((restaurant) => {
-                    return <RestaurantCard key={restaurant.info.id} resData={restaurant}/>
+                    return (
+                        <Link
+                        key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+                            <RestaurantCard key={restaurant.info.id} resData={restaurant}/>
+                        </Link>
+                    )
                 })}
                 
             </div>
