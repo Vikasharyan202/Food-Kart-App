@@ -72,3 +72,49 @@
 .user-card img{
     width: 200px;
 } 
+.menu{
+    text-align: center;
+}
+.accordian{
+    width: 50vw;
+    background-color: bisque;
+    margin-left: 25vw;
+    border-radius: 5px;
+    margin-top:6px ;
+    padding: 2px 6px;
+}
+.accordianList{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-weight: 600;
+    
+}
+.itemList{
+    text-align: left;
+}
+.itemInfo{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(180, 160, 160);
+    margin-top: 6px;
+}
+.itemInfo>div span{
+    font-size: medium;
+}
+.itemInfo p{
+    font-size: small;
+    text-align: left;
+}
+.itemInfo div img{
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+}
+.itemInfo div button{
+    position: absolute;
+    margin-left: -65px;
+    width: 50px;
+    background-color: rgb(34, 33, 33);
+    color: white;
+}

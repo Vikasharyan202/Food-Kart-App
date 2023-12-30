@@ -13,6 +13,8 @@ const Body = () => {
 
     const[filteredRestaurant, setFilteredRestaurant] = useState([]);
 
+    
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -24,13 +26,13 @@ const Body = () => {
             // https://corsproxy.io/? :-> this link solve CORS error for app & it's alternate of "cors plugin for browser"
         const json = await data.json();
         // console.log(json);
-        setListOfRestaurant(json?.data?.cards[5]?.card?.card?.gridElements?.
+        setListOfRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.
             infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[5]?.card?.card?.gridElements?.
+        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.
             infoWithStyle?.restaurants);
             
-            // console.log(json?.data?.cards[5]?.card?.card?.gridElements?.
-            //     infoWithStyle?.restaurants)
+            console.log(json?.data?.cards[4]?.card?.card?.gridElements?.
+                infoWithStyle?.restaurants);
     };
 
     const onlineStatus = useOnlineStatus();
@@ -40,8 +42,9 @@ const Body = () => {
             <h1>Oops! please check your internet connection</h1>
         )
     };
-
-    return listOfRestaurant.length === 0? (<Shimmer/>):(
+    console.log(listOfRestaurant)
+   
+    return listOfRestaurant.length === 0?(<Shimmer/>):(
         <div className="body">
             <div className="filter">
                 <div className="search">
@@ -75,7 +78,9 @@ const Body = () => {
                     return (
                         <Link
                         key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+                        
                             <RestaurantCard key={restaurant.info.id} resData={restaurant}/>
+                            
                         </Link>
                     )
                 })}

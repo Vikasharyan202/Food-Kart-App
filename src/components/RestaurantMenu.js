@@ -3,6 +3,8 @@ import {useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { URL_MENU_API } from "../utilits/contents";
+import RestaurantCard from "./RestaurantCard";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
 
@@ -31,20 +33,45 @@ const RestaurantMenu = () => {
     }
 
     const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
+    const categories = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (c) => c.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
+    console.log(categories)
+
     return(
         <div className="menu">
         
+            
+            <div>
             <h1>{resInfo?.cards[0]?.card?.card?.info?.name}</h1>
-            <h3>{resInfo?.cards[0]?.card?.card?.info?.cuisines.join(", ")}</h3>
-            <h3>{resInfo?.cards[0]?.card?.card?.info?.costForTwoMessage}</h3>
-            <h2>Menu</h2>
-            <ul>
-                {itemCards.map((item => (
-                    <li>{item.card.info.name} - Rs. {item.card.info.price / 100}</li>
-                )))}
-            </ul>
+            <p>{resInfo?.cards[0]?.card?.card?.info?.cuisines.join(", ")} - 
+            {resInfo?.cards[0]?.card?.card?.info?.costForTwoMessage}</p>
+            </div>
+            
+            <div>
+            {categories.map((category) => (
+                <RestaurantCategory key={"category?.card?.card?.id"} data={category?.card?.card}/>
+            ))}
+            </div>
+            
         </div>
     )
 }
+
+// Higher order component : input - RestaurantCard => return - RestaurantCardPromoted
+
+// export const withPromotedLabel = (RestaurantCard) => {
+//     return(props) => {
+//         return(
+//             <div>
+//                 <label>Promoted</label>
+//                 <RestaurantCard {...props}/>
+//             </div>
+//         );
+//     };
+// };
 
 export default RestaurantMenu;
