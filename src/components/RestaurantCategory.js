@@ -9,7 +9,7 @@ const RestaurantCategory = ({data}) => {
         setShowItems(!showItems)
     }
 
-    console.log(data)
+    // console.log(data)
     return (
         <div className="accordian">
             {/* Accordian Header */}

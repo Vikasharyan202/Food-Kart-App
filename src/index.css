@@ -6,6 +6,7 @@
     padding: 0 20px;
     border: 1px solid black;
 }
+
 .logo{
     width: 100px;
     height: 100px;
@@ -24,10 +25,11 @@
     justify-content: center;
 }
 .res-card{
-    width: 200px;
-    height: 350px;
+    width: 250px;
+    height: 400px;
     border: 1px solid burlywood;
     background-color: rgb(189, 193, 128);
+    border-radius: 4px;
 }
 .res-card:hover{
     cursor: pointer;
@@ -117,4 +119,16 @@
     width: 50px;
     background-color: rgb(34, 33, 33);
     color: white;
+}
+.userContext{
+    display: flex;
+}
+.cart{
+    text-align: center;
+}
+.cart h1{
+    color: rgb(232, 160, 73);
+}
+.cart button{
+    margin-top: 20px;
 }

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utilits/useOnlinestatus";
 import { Link } from "react-router-dom";
+import UserContext from "../utilits/UserContext";
 
 
 const Body = () => {
@@ -42,7 +43,9 @@ const Body = () => {
             <h1>Oops! please check your internet connection</h1>
         )
     };
-    console.log(listOfRestaurant)
+    console.log(listOfRestaurant);
+
+    const {loggedInUser, setUserName} = useContext(UserContext);
    
     return listOfRestaurant.length === 0?(<Shimmer/>):(
         <div className="body">
@@ -72,6 +75,13 @@ const Body = () => {
                     setListOfRestaurant(filteredRest);
                 }}>
                 Top Rated Restaurant</button>
+            </div>
+            <div className="userContext">
+                <label>Username: </label>
+                <input 
+                value={loggedInUser}
+                onChange={(e) => setUserName(e.target.value)}
+                />
             </div>
             <div className="res-container">
                 {filteredRestaurant.map((restaurant) => {
